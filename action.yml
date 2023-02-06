@@ -1,4 +1,4 @@
-name: "Docker Build (+buildx) with Zmicro"
+name: "Zmicro Package CI"
 description: "github action for docker (+buildx) with Zmicro"
 author: "Zero <GitHub: whatwewant>"
 branding:
