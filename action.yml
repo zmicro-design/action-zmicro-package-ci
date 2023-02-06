@@ -1,0 +1,41 @@
+name: "Docker Build (+buildx) with Zmicro"
+description: "github action for docker (+buildx) with Zmicro"
+author: "Zero <GitHub: whatwewant>"
+branding:
+  icon: "message-square"
+  color: "green"
+inputs:
+  tags:
+    required: false
+    description: specify build tags
+  push:
+    required: false
+    description: specify whether to push remote
+    default: "fasle"
+outputs:
+  random-number:
+    description: "Random number"
+    value: ${{ steps.random-number-generator.outputs.random-number }}
+
+runs:
+  using: composite
+  steps:
+    - name: Set up Zmicro
+      uses: zmicro-design/action-setup-zmicro@v1
+    
+    - name: Install
+      shell: zmicr {0}
+      run: curl -o- https://raw.githubusercontent.com/${{ github.repository }}/master/install | sh -s -- ONE_LINE
+
+    - name: help
+      shell: zmicr {0}
+      run: |
+        package=$(echo ${{ github.repository }} | awk -F '/' '{print $2}' | sed 's/package-//')
+        zmicro $package help
+
+    - name: version
+      shell: zmicr {0}
+      run: |
+        package=$(echo ${{ github.repository }} | awk -F '/' '{print $2}' | sed 's/package-//')
+        zmicro $package version
+
