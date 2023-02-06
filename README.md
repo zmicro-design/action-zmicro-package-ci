@@ -20,7 +20,7 @@ jobs:
     name: Test
     runs-on: ubuntu-latest
     steps:
-      - name: Docker Build
+      - name: Zmicro Package CI
         uses: zmicro-design/action-zmicro-package-ci@v1
         with:
           build-args: |

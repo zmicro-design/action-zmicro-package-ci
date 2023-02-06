@@ -24,17 +24,17 @@ runs:
       uses: zmicro-design/action-setup-zmicro@v1
     
     - name: Install
-      shell: zmicr {0}
+      shell: zmicro {0}
       run: curl -o- https://raw.githubusercontent.com/${{ github.repository }}/master/install | sh -s -- ONE_LINE
 
     - name: help
-      shell: zmicr {0}
+      shell: zmicro {0}
       run: |
         package=$(echo ${{ github.repository }} | awk -F '/' '{print $2}' | sed 's/package-//')
         zmicro $package help
 
     - name: version
-      shell: zmicr {0}
+      shell: zmicro {0}
       run: |
         package=$(echo ${{ github.repository }} | awk -F '/' '{print $2}' | sed 's/package-//')
         zmicro $package version

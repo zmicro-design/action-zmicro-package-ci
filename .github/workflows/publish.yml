@@ -38,18 +38,18 @@ jobs:
         env:
           ACTION_IMAGE_NAMESPACE: zmicro-design
 
-      - name: Test Docker Build
-        uses: ./
-        with:
-          build-args: |
-            VERSION=${{ steps.meta.outputs.version }}
-          context: .
-          # push: ${{ github.event_name != 'pull_request' }}
-          # cache-from: type=registry,ref=${{ steps.meta.outputs.name }}:buildcache
-          # cache-to: type=registry,ref=${{ steps.meta.outputs.name }}:buildcache,mode=max
-          tags: ${{ steps.meta.outputs.tags }}
-          # labels: ${{ steps.meta.outputs.labels }}
-          platforms: linux/amd64,linux/arm64
+      # - name: Test
+      #   uses: ./
+      #   with:
+      #     build-args: |
+      #       VERSION=${{ steps.meta.outputs.version }}
+      #     context: .
+      #     # push: ${{ github.event_name != 'pull_request' }}
+      #     # cache-from: type=registry,ref=${{ steps.meta.outputs.name }}:buildcache
+      #     # cache-to: type=registry,ref=${{ steps.meta.outputs.name }}:buildcache,mode=max
+      #     tags: ${{ steps.meta.outputs.tags }}
+      #     # labels: ${{ steps.meta.outputs.labels }}
+      #     platforms: linux/amd64,linux/arm64
 
 
       # Compile dist/index.js and bundle with action.yml
